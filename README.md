@@ -11,22 +11,22 @@ Name: Bao Xinyang    UID: 3035952989
 
 
 //Game description:
-1.	In this game, player has to control a snake to collect letters. In each round, a word will be given. Player needs to use keyboard (A, left; D, right; W, up; S, down) to control the moving direction of the snake to collect letters so as to spell this word. 
-2.	Two letters will be given each time with one correct and one wrong, player need to choose the correct one and eat it. The length of words and the number of distractors in each round will increase as the level.
-3.	If the entire word is spelt correctly, win this round and enter the next round.
-4.	If the snake hit the wall or obstacles or eat the wrong letters, the game fail.
-5.	Complete 10 rounds, win the game.
-6.	Map in each round is different.
-7.	Positions of letters are randomly generated each time.
-8.	The level of difficulty will increase with the round.
-9.	Sample.
-    The word you need to spell in this round: APPLE
-//        **********************************
+1.In this game, player has to control a snake to collect letters. In each round, a word will be given. Player needs to use keyboard (A, left; D, right; W, up; S, down) to control the moving direction of the snake to collect letters so as to spell this word. 
+2.Two letters will be given each time with one correct and one wrong, player need to choose the correct one and eat it. The length of words and the number of distractors in each round will increase as the level.
+3.If the entire word is spelt correctly, win this round and enter the next round.
+4.If the snake hit the wall or obstacles or eat the wrong letters, the game fail.
+5.Complete 10 rounds, win the game.
+6.Map in each round is different.
+7.Positions of letters are randomly generated each time.
+8.The level of difficulty will increase with the round.
+9.Sample.
+  The word you need to spell in this round: APPLE
+          **********************************
 	  *                                *
 	  *      L                         *
 	  *                          J     *
 	  *                                *
-	  *          @@@@@@@APP            *
+	  *                  @@@APP        *
 	  *                                *
     	  *                                *
     	  **********************************
