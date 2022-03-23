@@ -35,8 +35,8 @@ Name: Bao Xinyang    UID: 3035952989
 
 //Game Features and its Corresponding Coding Requirements
 1. The game allows setting random game scenarios at different time. For example, the positions of the required letters for each word are randomly distributed in the map by calling the random function rand() to generate several 2-D points.
-2. Arrays are adopted in the program so as to store some basic information, such as the wordlist in each level of the game and the body of the snake. Classes and structs are also required to store the data of the player (eg. current position, moving speed, game level) and the functions that are used mo make movements and judging success or failure.
-3. Dynamic memory is of vital importance in the implementation of this game, because the body of the snake depends on the input(keyboard input) from the player, meaning that it can only be determined in runtime. This enables the instant storge of the letters on the body of the snake.
+2. Arrays are adopted in the program so as to store some basic information, such as the wordlist in each level of the game and the body of the snake. Classes and structs are also required to store the data of the player (eg. current position, moving speed, game level) and the functions that are used to make movements and judging success or failure.
+3. Dynamic memory is of vital importance in the implementation of this game, because the body of the snake depends on the letters collected by the player, meaning that it can only be determined in runtime. Such method enables instant storage of the letters on the body of the snake.
 4. Wordlists/dictionaries for different levels are streamed into the program via file input, and file output is used to write the instant status of the game into a txt file, enabling loading and saving game status instantly.
 5. The function declarations are written in different header files, and its corresponding contents are also defined in different files. They are compiled separately and finally linked together while executing the mian program. Such measure makes the code tidy and much easier to read.
 
