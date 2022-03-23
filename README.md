@@ -21,15 +21,15 @@ Name: Bao Xinyang    UID: 3035952989
 8. The level of difficulty will increase with the round.
 9. Sample.
    The word you need to spell in this round: APPLE
-//   **********************************
+//        **********************************
 //	  *                                *
 //	  *      L                         *
 //	  *                          J     *
 //	  *                                *
 //	  *                  @@@APP        *
 //	  *                                *
-//   *                                *
-//   **********************************
+//        *                                *
+//        **********************************
 
 
 
