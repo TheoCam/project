@@ -1,10 +1,12 @@
-# project
+# ENGG1340 group_project
 //Gluttonous_Snake (word-spelling version)
 
 //Group Number: 16
 
 //Team Members
 Name: Liu Xinrui     UID: 3035950204
+Name: Bao Xinyang    UID: 3035952989
+
 
 //Game description:
 1.	In each round, a word will be given. Players need to use keyboard (A, left; D, right; W, up; S, down), to control the moving direction of the snake to eat letters and spell this word. 
@@ -15,6 +17,7 @@ Name: Liu Xinrui     UID: 3035950204
 6.	Maps and obstacles within the maps are generated randomly each round.
 7.	Positions of letters are randomly generated each time.
 8.	The level of difficulty will increase with the round.
+9.	(积分制？）
 
 
 //Game Features and its Corresponding Coding Requirements
