@@ -11,15 +11,26 @@ Name: Bao Xinyang    UID: 3035952989
 
 
 //Game description:
-1.	In each round, a word will be given. Players need to use keyboard (A, left; D, right; W, up; S, down), to control the moving direction of the snake to eat letters and spell this word. 
-2.	Two letters will be given each time with one correct and one wrong, players need to choose the correct one and eat it.
-3.	If the entire word is spelt correctly, win this round.
+1.	In this game, player has to control a snake to collect letters. In each round, a word will be given. Player needs to use keyboard (A, left; D, right; W, up; S, down) to control the moving direction of the snake to collect letters so as to spell this word. 
+2.	Two letters will be given each time with one correct and one wrong, player need to choose the correct one and eat it. The length of words and the number of distractors in each round will increase as the level.
+3.	If the entire word is spelt correctly, win this round and enter the next round.
 4.	If the snake hit the wall or obstacles or eat the wrong letters, the game fail.
 5.	Complete 10 rounds, win the game.
-6.	Maps and obstacles within the maps are generated randomly each round.
+6.	Map in each round is different.
 7.	Positions of letters are randomly generated each time.
 8.	The level of difficulty will increase with the round.
-9.	(积分制？）
+9.	Sample.
+    The word you need to spell in this round: APPLE
+	  **********************************
+	  *                                *
+	  *      L                         *
+	  *                          J     *
+	  *                                *
+	  *          @@@@@@@APP            *
+	  *                                *
+    *                                *
+    **********************************
+
 
 
 //Game Features and its Corresponding Coding Requirements
@@ -28,3 +39,4 @@ Name: Bao Xinyang    UID: 3035952989
 3. Dynamic memory is of vital importance in the implementation of this game, because the body of the snake depends on the input(keyboard input) from the player, meaning that it can only be determined in runtime. This enables the instant storge of the letters on the body of the snake.
 4. Wordlists/dictionaries for different levels are streamed into the program via file input, and file output is used to write the instant status of the game into a txt file, enabling loading and saving game status instantly.
 5. The function declarations are written in different header files, and its corresponding contents are also defined in different files. They are compiled separately and finally linked together while executing the mian program. Such measure makes the code tidy and much easier to read.
+
