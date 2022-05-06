@@ -127,57 +127,44 @@ void create_game_area_frame(int width,int height)
 
 // ---------------------------------------part2 -----------------------------------------
 
-struct snake{
-    int x;
-    int y;
-    snake * next;
-};
-
 // print snake
-void print_snake(snake *s/*蛇头*/ ) {
-
-    snake * node = s;
-
+void print_snake(vector<node> snake/*蛇头*/ ) 
+{
     SetColor(blue, & old_color);
 
-    //打印蛇头 
-    if( node==s )  {
-        PrintAtCursor("◆", s->x, s->y);
-        node = node->next;
-    }
-    //打印蛇身 
-    while (node != NULL)  {
-        PrintAtCursor("●", node->x, node->y);
-        node = node->next;
-    }
+    for ( int i=0; i<snake.size(); ++i) {
 
-    //打印完，恢复为原来的打印颜色，不影响后面的打印
-    SetColor(old_color, NULL);
+        if ( i==0) {
+            PrintAtCursor("◆", snake[i].x, snake[i].y);
+        }
 
-    
+        else {
+            PrintAtCursor(& snake[i].text, snake[i].x, snake[i].y);
+        }
+
+    }    
 
 }
 
 
 
-boolean check_game_over(snake *head/*蛇头*/, int width, int height) 
+boolean check_game_over(vector<node> snake/*蛇头*/) 
 {
     // hit walls
-    if (head->x==0 || head->x==width || head->y==0 || head->y==height) {
+    if (snake[0].x==0 || snake[0].x==70 || snake[0].y==0 || snake[0].y==70) {
         return true;
     }
 
     // hit itself
-    snake *node = head;
-    while( node != NULL) {
-        if ( head->x == node->x  &&  head->y == node->y) {
+    for ( int i=0; i<snake.size(); ++i) {
+        if (snake[0].x == snake[i].x  &&  snake[0].y == snake[i].y) {
             return true;
         }
-        node = node->next;
     }
 
     return false;
 }
+
 
 
 
@@ -200,18 +187,43 @@ void game_pause(int width, int height)    //暂停
 
 
 
-// 保存游戏进度
-
-
-
-int main()
+// save current game
+void saving(int current_level)
 {
-    //...
+    if() {   // enter Q to save the game
+        
+        ofstream fout;
+        fout.open("game_level.txt");
+
+    
+        if ( fout.fail() ) {
+            cout << "Error in file opening!" << endl;
+        }
+        exit(1);
+
+        fout << current_level << endl;
+        fout.close();
+    
+
+}
 
 
-    int level=10;
-    for (int i=0; i<10; ++i) {
 
-    }
+// read saved game
+void reading() 
+{
+    if() {   // start from current level
+        char game_level[100] = "game_level.txt";
+        ifstream fin;
+        fin.open(game_level);
+
+    
+        if ( fin.fail() ) {
+            cout << "Error in file opening!" << endl;
+        }
+        exit(1);
+
+        fin >> current_level >> endl;
+        fin.close();
 }
 
