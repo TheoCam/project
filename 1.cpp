@@ -1,7 +1,15 @@
 #include <iostream>
-#include <windows.h>  // WORD COORD HANDLE ...
+#include <fstream>
+#include <cstdlib>
+#include <string>
+#include <vector>
+#include <stdio.h>
+#include <unistd.h>
+
+
 #include <stdlib.h>
 #include <time.h>
+
 using namespace std;
 
 
@@ -10,114 +18,80 @@ using namespace std;
 #define blue 0x13
 
 
-WORD old_color = 0;  
-#define STD_OUTPUT_HANDLE ((DWORD)-11)
-
 void MoveCursorPosition(int x, int y)
 {
-    
-    COORD position = {x, y};  
-
-    // ??????? 获得标准的输出设备的句柄 即获得cmd窗口的打印控制
-    HANDLE hCmdWindow;    
-    hCmdWindow = GetStdHandle(STD_OUTPUT_HANDLE);
-
-    // ???????
-    SetConsoleCursorPosition(hCmdWindow, position);
-    return;
+    printf ("\033[x; yH");
 }
 
 
 
-void PrintAtCursor(char *ch, int x , int y) {
-    MoveCursorPosition(x, y);
-    cout << ch;
-}
-
-
-
-// 修改当前打印将使用的颜色 （并且保存修改前的设置）
-void SetColor(WORD  NewColor, WORD  *old )
+void PrintAtCursor(char * ch, int x, int y)
 {
-    // ???????? 获得打印窗口的操作句柄
-    HANDLE handle;
-    handle = GetStdHandle(STD_OUTPUT_HANDLE);
-    
-    // ?????????记住当前正在使用的颜色
-    if(old) {
-        CONSOLE_SCREEN_BUFFER_INFO Info;   
-        GetConsoleScreenBufferInfo(handle, &Info);
-        *old = Info.wAttributes; 
-    }
-
-    // 设定颜色
-    SetConsoleTextAttribute(handle, NewColor);
-    return;
+    MoveCursorPosition(x, y);
+    printf("\033[0;30;47m s% \n", ch);
 }
 
 
 
-void create_game_area(int width, int height)
+
+
+
+// width=70, height=70
+void create_game_area( )
 {
     int width_index = 0;
     int height_index = 0;
 
-    // green game area
-    SetColor(green, & old_color);
+    
 
-    for(width_index = 0; width_index < width; width_index++) {
-        for(height_index = 0; height_index < height ; height_index++) {
+    for(width_index = 0; width_index < 70; width_index++) {
+        for(height_index = 0; height_index < 70 ; height_index++) {
             
             // from (2,1), print "■", width=2, height=1
             PrintAtCursor("■", 2+width_index*2, 1+height_index);
         }
     }
 
-    // return to old color
-    SetColor(old_color, NULL);
+    
 
     return;
 }
 
 
 
-void create_game_area_frame(int width,int height)
+void create_game_area_frame( )
 {
     int width_index = 0;
     int height_index = 0;
 
-    
-    SetColor(blue, & old_color);
 
     // upper
-    for(width_index = 0; width_index < width ; width_index++) {
+    for(width_index = 0; width_index < 70 ; width_index++) {
         
-        PrintAtCursor("■", 2+width_index*2, 0);
+        PrintAtCursor("■", 1+width_index, 0);
     }
 
     // left
-    for(height_index = 0; height_index < height ; height_index++) {
+    for(height_index = 0; height_index < 70 ; height_index++) {
         
         PrintAtCursor("■", 0, 1+height_index);
     }
 
     // lower
-    for(width_index = 0; width_index < width ; width_index++) {
+    for(width_index = 0; width_index < 70 ; width_index++) {
         
-        PrintAtCursor("■", 2+width_index*2, height+1);
+        PrintAtCursor("■", 1+width_index, 71);
     }
 
     // right
-    for(height_index = 0; height_index < height; height_index++) {
+    for(height_index = 0; height_index < 70; height_index++) {
         
-        PrintAtCursor("■", 2+width*2, 1+height_index);
+        PrintAtCursor("■", 2+70*2, 1+height_index);
     }
 
-    // return old color
-    SetColor(old_color, NULL);
 
     
-    MoveCursorPosition(0, 42);
+    MoveCursorPosition(0, 80);
 
     return;
 }
@@ -127,10 +101,39 @@ void create_game_area_frame(int width,int height)
 
 // ---------------------------------------part2 -----------------------------------------
 
+struct node { //node represents each section of the snake's body
+	int x;
+	int y;
+	char text;
+};
+
+
+void add_node(vector<node> snake, int x, int y, char text) {//This function adds one node to the snake
+	node body;
+	body.x = x;
+	body.y = y;
+	body.text = text;
+	
+	snake.push_back(body);
+}
+
+vector<node> create_snake(int x, int y) {//This function creates the snake of type vector
+	node head;
+	head.x = x;
+	head.y = y;
+	head.text = '$';//The head of the snake is represented by the symbol $
+	
+	vector<node> snake;
+	snake.push_back(head);
+	return snake;
+}
+
+
+
 // print snake
 void print_snake(vector<node> snake/*蛇头*/ ) 
 {
-    SetColor(blue, & old_color);
+
 
     for ( int i=0; i<snake.size(); ++i) {
 
@@ -139,7 +142,7 @@ void print_snake(vector<node> snake/*蛇头*/ )
         }
 
         else {
-            PrintAtCursor(& snake[i].text, snake[i].x, snake[i].y);
+            PrintAtCursor( & snake[i].text, snake[i].x, snake[i].y);
         }
 
     }    
@@ -148,7 +151,7 @@ void print_snake(vector<node> snake/*蛇头*/ )
 
 
 
-boolean check_game_over(vector<node> snake/*蛇头*/) 
+bool check_game_over(vector<node> snake/*蛇头*/) 
 {
     // hit walls
     if (snake[0].x==0 || snake[0].x==70 || snake[0].y==0 || snake[0].y==70) {
@@ -167,31 +170,10 @@ boolean check_game_over(vector<node> snake/*蛇头*/)
 
 
 
-
-void game_pause(int width, int height)    //暂停
-{
-    PrintAtCursor("!!!pause!!!", width/2, height+2);
-
-    while (true) {
-        
-        Sleep(1000);   // 滞留1秒
-
-        if (GetAsyncKeyState(VK_SPACE)) {
-            break;
-        }
-    }
-    
-    PrintAtCursor("                    ", width/2, height+2);
-    return;
-}
-
-
-
-// save current game
+// 保存游戏进度
 void saving(int current_level)
 {
-
-        
+    
         ofstream fout;
         fout.open("game_level.txt");
 
@@ -211,8 +193,7 @@ void saving(int current_level)
 
 // read saved game
 int reading() 
-{
-    
+{ 
         int current_level;
         char game_level[100] = "game_level.txt";
         ifstream fin;
@@ -225,9 +206,25 @@ int reading()
         exit(1);
 
     
-        fin >> current_level >> endl;
+        fin >> current_level;
         fin.close();
         return current_level;
     
 }
 
+
+
+int main()
+{
+    create_game_area( );
+    create_game_area_frame( );
+
+    int level;
+	vector<node> snake = create_snake(70, 25);//use a vector variable to store the information of snake (parameters need to be double-checked)
+	print_snake(snake);
+	//level = load_game() Not Complete!
+	// run_game(snake, level);
+	
+	return 0;
+
+}
