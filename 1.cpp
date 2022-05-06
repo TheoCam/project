@@ -190,7 +190,7 @@ void game_pause(int width, int height)    //暂停
 // save current game
 void saving(int current_level)
 {
-    if() {   // enter Q to save the game
+
         
         ofstream fout;
         fout.open("game_level.txt");
@@ -210,9 +210,10 @@ void saving(int current_level)
 
 
 // read saved game
-void reading() 
+int reading() 
 {
-    if() {   // start from current level
+    
+        int current_level;
         char game_level[100] = "game_level.txt";
         ifstream fin;
         fin.open(game_level);
@@ -223,7 +224,10 @@ void reading()
         }
         exit(1);
 
+    
         fin >> current_level >> endl;
         fin.close();
+        return current_level;
+    
 }
 
