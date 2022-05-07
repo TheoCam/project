@@ -11,21 +11,21 @@ Name: Bao Xinyang    UID: 3035952989
 
 
 //Game description:
-1. In this game, player has to control a snake to collect letters. In each round, a word will be given. Player needs to use keyboard (A, left; D, right; W, up; S, down) to control the moving direction of the snake to collect letters so as to spell this word. 
-2. The game difficulty will increase, which means the length of words in each round will increase as the level.
-3. If the entire word is spelt correctly, win this round and enter the next round.
+1. In this game, player has to control a snake to collect letters. In each level, a word will be given. Player needs to use keyboard (a, left; d, right; w, up; s, down) to control the moving direction of the snake to collect letters so as to spell this word. 
+2. The game difficulty will increase, which means the length of words in each level will increase.
+3. If the entire word is spelt correctly, win this round and enter the next level.
 4. If the snake hit the wall or hit itself, the game fail.
-5. Complete 10 rounds, win the game.
+5. Complete 10 levels, win the game.
 6. Positions of letters are randomly generated each time.
-7. Enter 'Q' to quit and save the game. Next time the player enters the game, it will start from the saved round.
+7. Enter 'q' to quit and save the game. Next time the player enters the game, it will start from the saved level.
 8. Sample.
-   The word you need to spell in this round: APPLE
+   The word you need to spell in level 0: APPLE
 //   **********************************
 //	  *                                *
-//	  *      L                         *
-//	  *                          J     *
+//	  *      l                         *
 //	  *                                *
-//	  *                  $APP          *
+//	  *                                *
+//	  *                  $app          *
 //	  *                                *
 //   *                                *
 //   **********************************
