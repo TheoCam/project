@@ -1,4 +1,34 @@
+#include <iostream>
+#include <vector>
+#include <cstdlib>
+#include <unistd.h>
+#include <string>
+#include <ctime>
+#include <stdio.h>
+#include <termios.h>
+#include <iomanip>
 
+#include <fstream>
+#include <stdlib.h>
+#include <time.h>
+
+#include "execution.h"
+using namespace std;
+
+
+//Bao's Part
+bool check_game_over(vector<node> snake/*éå§ã*/)
+{
+    // hit walls
+    if (snake[0].x==0 || snake[0].x==40 || snake[0].y==0 || snake[0].y==20) {
+        return true;
+    }
+
+    // hit itself
+    for ( int i=1; i<snake.size(); ++i) {
+        if (snake[0].x == snake[i].x  &&  snake[0].y == snake[i].y) {
+            return true;
+        }
     }
 
     return false;
