@@ -1,5 +1,6 @@
 # ENGG1340 group_project
 //Gluttonous_Snake (word-spelling version)
+//server used: computer science department academy 21 server
 
 //Group Number: 16
 
@@ -42,7 +43,7 @@ Structs is also required to store the data of the player (eg. x-coordinate, y-co
 
 
 
-//List of nin-standard C/C++ librarires
+//List of nin-standard C/C++ libraries
 1. <termios.h>
 This is a library that contains the functions and struct for Linux terminal I/O. 
 termios: We have use this struct to declare variables storing Linux terminal I/O information.
