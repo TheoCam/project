@@ -9,7 +9,6 @@
 
 #include <fstream>
 #include <stdlib.h>
-#include <time.h>
 
 #include "execution.h"
 using namespace std;
