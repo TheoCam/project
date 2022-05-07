@@ -12,7 +12,7 @@ Name: Bao Xinyang    UID: 3035952989
 
 //Game description:
 1. In this game, player has to control a snake to collect letters. In each round, a word will be given. Player needs to use keyboard (A, left; D, right; W, up; S, down) to control the moving direction of the snake to collect letters so as to spell this word. 
-2. The length of words and the number of distractors in each round will increase as the level.
+2. The length of words in each round will increase as the level.
 3. If the entire word is spelt correctly, win this round and enter the next round.
 4. If the snake hit the wall or hit itself, the game fail.
 5. Complete 10 rounds, win the game.
