@@ -15,7 +15,7 @@ using namespace std;
 
 
 //Bao's Part
-bool check_game_over(vector<node> snake/*éå§ã*/)
+bool check_game_over(vector<node> snake)  // the condition of game over
 {
     // hit walls
     if (snake[0].x==0 || snake[0].x==40 || snake[0].y==0 || snake[0].y==20) {
@@ -32,7 +32,7 @@ bool check_game_over(vector<node> snake/*éå§ã*/)
     return false;
 }
 
-void saving_game(int current_level)
+void saving_game(int current_level)  // save the current game level when player enter 'q' to quit and save the game
 {
 
         ofstream fout;
@@ -41,7 +41,7 @@ void saving_game(int current_level)
 
         if ( fout.fail() ) {
             cout << "Error in file opening!" << endl;
-						exit(1);
+		exit(1);
         }
 
 
@@ -51,7 +51,7 @@ void saving_game(int current_level)
 
 }
 
-int reading()
+int reading()  // continue the game from the previously saved game level
 {
         int current_level;
         char game_level[100] = "game_level.txt";
@@ -61,7 +61,7 @@ int reading()
 
         if ( fin.fail() ) {
             cout << "Error in file opening!" << endl;
-						exit(1);
+		exit(1);
         }
 
 
