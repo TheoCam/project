@@ -246,7 +246,7 @@ void run_game(vector<node> snake, int level){//this function is the main body of
 			}
 		}
 
-		// eat_food(snake, food_x, food_y, food, direction, round);
+		// judge whether the food is eaten by the snake or not
 		//If so, add the corresponding letter to the body of the snake
 		if (snake[0].x == food_x && snake[0].y == food_y){//to judge whetherthe posititon of the head coincides with the position of the food
 			new_node_x = snake[snake.size()-1].x;
@@ -265,9 +265,9 @@ void run_game(vector<node> snake, int level){//this function is the main body of
 					new_node_y -= 1;
 					break;
 			}
-			delete_food(food_x, food_y);
+			delete_food(food_x, food_y);//delete the food from the gameboard
 
-			// add_node(snake, new_node_x, new_node_y, food);
+			// add one node to the snake;
 			node body;
 			body.x = new_node_x;
 			body.y = new_node_y;
@@ -279,14 +279,14 @@ void run_game(vector<node> snake, int level){//this function is the main body of
 			print_node(snake[0].x, snake[0].y, snake[0].text);
 			round += 1;
 			generate_foodx(food_x,food_y, snake);
-			printf("\033[22;0H");
+			printf("\033[22;0H");   //moving cursor position to (0,22)
 			cout << "food_x, food_y "<< setfill('0') << setw(2) << food_x << " " << setfill('0') << setw(2) << food_y;
 			food = 	food_list[level][round];
 			print_food(food_x, food_y, food);
 
 		}
 
-		if (check_game_over(snake)){
+		if (check_game_over(snake)){//to check whether the game is finished or not
 			printf("\033[24;0H");  //this line uses the formating output in c to specify the position of the cursor
 			cout << "You fail, try again! ";
 			break;
@@ -300,15 +300,15 @@ void run_game(vector<node> snake, int level){//this function is the main body of
 			}
 			snake = create_snake(20,10);
 			print_snake(snake);
-      if (level != 10){
-        generate_foodx(food_x,food_y, snake);
-        food = 	food_list[level][round];
-        print_food(food_x, food_y, food);
+		      if (level != 10){// when the game is not completed, generate a new food on the gameboard
+			generate_foodx(food_x,food_y, snake);
+			food = 	food_list[level][round];
+			print_food(food_x, food_y, food);
 
-        printf("\033[23;0H");
-        printf("\033[K");
-        cout << "level: " << level << " target: " << food_list[level];
-      }
+			printf("\033[23;0H");
+			printf("\033[K");
+			cout << "level: " << level << " target: " << food_list[level];
+		      }
 
 		}
 
