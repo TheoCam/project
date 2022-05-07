@@ -47,6 +47,6 @@ void saving_game(int current_level);
 
 int reading();
 
-bool check_game_over(vector<node> snake/*éå§ã*/);
+bool check_game_over(vector<node> snake);
 
 #endif
