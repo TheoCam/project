@@ -132,8 +132,9 @@ void record_time(int used_time)
 
         if ( fout.fail() ) {
             cout << "Error in file opening!" << endl;
+		exist(1);
         }
-        exit(1);
+        
 
         fout << used_time << endl;
         fout.close();
