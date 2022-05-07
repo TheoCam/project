@@ -13,8 +13,8 @@ Name: Bao Xinyang    UID: 3035952989
 
 //Game description:
 1. In this game, player has to control a snake to collect letters. In each level, a word will be given. Player needs to use keyboard (a, left; d, right; w, up; s, down) to control the moving direction of the snake to collect letters so as to spell this word. 
-2. The game difficulty will increase, which means the length of words in each level will increase.
-3. If the entire word is spelt correctly, win this round and enter the next level.
+2. The game difficulty will increase as level increases, which means the length of words in each level will increase.
+3. If the entire word is spelt correctly, player will be promoted to the next level.
 4. If the snake hit the wall or hit itself, the game fail.
 5. Complete 10 levels, win the game.
 6. Positions of letters are randomly generated each time.
@@ -54,7 +54,7 @@ new_mode.c_cc[VMIN] = 1: setting the length of the expected input to be 1
 new_mode.c_cc[VTIME] = 0: etting the time of input timeout
 tcsetattr(0, TCSANOW, &new_mode): set the input mode of the terminal according to the attributes stored in new_mode. TCSANOW means update immediately
 
-The above mentioned functions help set the input mode of Linux terminal. It allows player to make instructions by directly pressing keys on the keyboard (eg: a,w,s,d). There is no need to press 'enter' to mark the end of reading input, and the input char will not be shown in ther terminal, making the interface clean and tidy.
+The above mentioned functions help set the input mode of Linux terminal. It allows player to make instructions by directly pressing keys on the keyboard (eg: a,w,s,d). There is no need to press 'enter' to mark the end of reading input, and the input char will not be shown in the Linux terminal, making the interface clean and tidy.
 
 2. <iomanip>
 We use setw() and setfill() function in this library to format the output of our program
